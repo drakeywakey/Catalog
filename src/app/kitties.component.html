@@ -1,0 +1,10 @@
+<h2>Kitties!</h2>
+<input type="checkbox" name="faves" [(ngModel)]="fave">Faves
+<ul class="kitties-list">
+	<li *ngFor="let kitty of kitties | FavePipe:fave" (click)="onSelect(kitty)" [class.selected]="kitty === selectedKitty">
+		<img class="thumbnail" src="{{kitty.src}}"/>
+    	<p>{{kitty.name}}<p>
+    	<p>Fave: <input type="checkbox" [(ngModel)]="kitty.fave"></p>
+	</li>
+</ul>
+<my-kitty-detail [kitty]="selectedKitty"></my-kitty-detail>
