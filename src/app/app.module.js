@@ -12,10 +12,10 @@ var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var core_1 = require('@angular/core');
 var app_component_1 = require('./app.component');
-var faves_component_1 = require('./faves.component');
 var kitty_detail_component_1 = require('./kitty-detail.component');
 var kitty_service_1 = require('./kitty.service');
 var fave_pipe_1 = require('./fave.pipe');
+var search_pipe_1 = require('./search.pipe');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,8 +28,8 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 fave_pipe_1.FavePipe,
-                faves_component_1.FavesComponent,
-                kitty_detail_component_1.KittyDetailComponent
+                kitty_detail_component_1.KittyDetailComponent,
+                search_pipe_1.SearchPipe
             ],
             providers: [kitty_service_1.KittyService],
             bootstrap: [app_component_1.AppComponent]

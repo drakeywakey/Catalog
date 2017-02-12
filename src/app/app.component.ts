@@ -18,8 +18,9 @@ export class AppComponent implements OnInit  {
 		this.getKitties();
 	}
 
-	fave: false;
+	fave: boolean = false;
 	kitties: Kitty[];
+	search: string = '';
 	selectedKitty: Kitty;
 	title: 'CATalog';
 
@@ -28,6 +29,11 @@ export class AppComponent implements OnInit  {
 	}
 
 	onSelect(kitty: Kitty): void {
-		this.selectedKitty = kitty;
+		if (this.selectedKitty === kitty) {
+			this.selectedKitty = null;
+		}
+		else {
+			this.selectedKitty = kitty;
+		}
 	}
 }

@@ -9,24 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var kitty_1 = require('./kitty');
-var KittyDetailComponent = (function () {
-    function KittyDetailComponent() {
+var SearchPipe = (function () {
+    function SearchPipe() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', kitty_1.Kitty)
-    ], KittyDetailComponent.prototype, "kitty", void 0);
-    KittyDetailComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'my-kitty-detail',
-            templateUrl: './kitty-detail.component.html',
-            styleUrls: ['./kitty-detail.component.css']
+    SearchPipe.prototype.transform = function (kitties, search) {
+        if (kitties == null) {
+            return null;
+        }
+        if (search === '') {
+            return kitties;
+        }
+        return kitties.filter(function (kitty) {
+            return kitty.name.indexOf(search) > -1 ||
+                kitty.description.indexOf(search) > -1;
+        });
+    };
+    SearchPipe = __decorate([
+        core_1.Pipe({
+            name: 'SearchPipe'
         }), 
         __metadata('design:paramtypes', [])
-    ], KittyDetailComponent);
-    return KittyDetailComponent;
+    ], SearchPipe);
+    return SearchPipe;
 }());
-exports.KittyDetailComponent = KittyDetailComponent;
-//# sourceMappingURL=kitty-detail.component.js.map
+exports.SearchPipe = SearchPipe;
+//# sourceMappingURL=search.pipe.js.map

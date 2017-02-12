@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { NgModule }      from '@angular/core';
 
 import { AppComponent }  from './app.component';
-import { FavesComponent } from './faves.component';
 import { KittyDetailComponent } from './kitty-detail.component';
 
 import { KittyService } from './kitty.service';
 
 import { FavePipe } from './fave.pipe';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   imports: [
@@ -18,8 +18,8 @@ import { FavePipe } from './fave.pipe';
   declarations: [
   	AppComponent,
   	FavePipe,
-  	FavesComponent,
-  	KittyDetailComponent
+  	KittyDetailComponent,
+  	SearchPipe
   ],
   providers: [ KittyService ],
   bootstrap:    [ AppComponent ]

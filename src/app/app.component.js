@@ -13,6 +13,8 @@ var kitty_service_1 = require('./kitty.service');
 var AppComponent = (function () {
     function AppComponent(kittyService) {
         this.kittyService = kittyService;
+        this.fave = false;
+        this.search = '';
     }
     AppComponent.prototype.ngOnInit = function () {
         this.getKitties();
@@ -22,7 +24,12 @@ var AppComponent = (function () {
         this.kittyService.getKitties().then(function (kitties) { return _this.kitties = kitties; });
     };
     AppComponent.prototype.onSelect = function (kitty) {
-        this.selectedKitty = kitty;
+        if (this.selectedKitty === kitty) {
+            this.selectedKitty = null;
+        }
+        else {
+            this.selectedKitty = kitty;
+        }
     };
     AppComponent = __decorate([
         core_1.Component({

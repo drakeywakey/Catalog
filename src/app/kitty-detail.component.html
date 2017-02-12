@@ -1,6 +1,6 @@
-<div *ngIf="kitty">
+<div class="modal" *ngIf="kitty">
   <h2>{{kitty.name}} the kitty is {{kitty.description}}!</h2>
-  <div><label>id: </label>{{kitty.id}}</div>
+  <img src="{{kitty.src}}">
   <div>
   	<label>info: </label>
   	<input [(ngModel)]="kitty.name" placeholder="name">
