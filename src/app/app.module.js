@@ -11,10 +11,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var platform_browser_1 = require('@angular/platform-browser');
 var forms_1 = require('@angular/forms');
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var app_component_1 = require('./app.component');
 var faves_component_1 = require('./faves.component');
-var kitties_component_1 = require('./kitties.component');
 var kitty_detail_component_1 = require('./kitty-detail.component');
 var kitty_service_1 = require('./kitty.service');
 var fave_pipe_1 = require('./fave.pipe');
@@ -26,31 +24,11 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 forms_1.FormsModule,
-                router_1.RouterModule.forRoot([
-                    {
-                        path: '',
-                        redirectTo: '/faves',
-                        pathMatch: 'full'
-                    },
-                    {
-                        path: 'detail/:id',
-                        component: kitty_detail_component_1.KittyDetailComponent
-                    },
-                    {
-                        path: 'faves',
-                        component: faves_component_1.FavesComponent
-                    },
-                    {
-                        path: 'kitties',
-                        component: kitties_component_1.KittiesComponent
-                    }
-                ])
             ],
             declarations: [
                 app_component_1.AppComponent,
                 fave_pipe_1.FavePipe,
                 faves_component_1.FavesComponent,
-                kitties_component_1.KittiesComponent,
                 kitty_detail_component_1.KittyDetailComponent
             ],
             providers: [kitty_service_1.KittyService],

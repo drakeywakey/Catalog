@@ -9,10 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var kitty_service_1 = require('./kitty.service');
 var AppComponent = (function () {
-    function AppComponent() {
-        this.title = 'CATalog';
+    function AppComponent(kittyService) {
+        this.kittyService = kittyService;
     }
+    AppComponent.prototype.ngOnInit = function () {
+        this.getKitties();
+    };
+    AppComponent.prototype.getKitties = function () {
+        var _this = this;
+        this.kittyService.getKitties().then(function (kitties) { return _this.kitties = kitties; });
+    };
+    AppComponent.prototype.onSelect = function (kitty) {
+        this.selectedKitty = kitty;
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -20,7 +31,7 @@ var AppComponent = (function () {
             templateUrl: './app.component.html',
             styleUrls: ['./app.component.css']
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [kitty_service_1.KittyService])
     ], AppComponent);
     return AppComponent;
 }());

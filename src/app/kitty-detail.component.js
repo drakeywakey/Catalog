@@ -9,26 +9,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var common_1 = require('@angular/common');
-require('rxjs/add/operator/switchMap');
 var kitty_1 = require('./kitty');
-var kitty_service_1 = require('./kitty.service');
 var KittyDetailComponent = (function () {
-    function KittyDetailComponent(activatedRoute, kittyService, location) {
-        this.activatedRoute = activatedRoute;
-        this.kittyService = kittyService;
-        this.location = location;
+    function KittyDetailComponent() {
     }
-    KittyDetailComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.activatedRoute.params
-            .switchMap(function (params) { return _this.kittyService.getKitty(+params['id']); })
-            .subscribe(function (kitty) { return _this.kitty = kitty; });
-    };
-    KittyDetailComponent.prototype.goBack = function () {
-        this.location.back();
-    };
     __decorate([
         core_1.Input(), 
         __metadata('design:type', kitty_1.Kitty)
@@ -39,7 +23,7 @@ var KittyDetailComponent = (function () {
             selector: 'my-kitty-detail',
             templateUrl: './kitty-detail.component.html'
         }), 
-        __metadata('design:paramtypes', [router_1.ActivatedRoute, kitty_service_1.KittyService, common_1.Location])
+        __metadata('design:paramtypes', [])
     ], KittyDetailComponent);
     return KittyDetailComponent;
 }());

@@ -1,1 +1,26 @@
+.kitties-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	list-style-type: none;
+}
 
+.kitties-list li {
+	margin-bottom: 50px;
+}
+
+.kitties-list li:hover {
+	background: steelblue;
+	color: #fff;
+	cursor: pointer;
+}
+
+.thumbnail {
+	height: 350px;
+	width: 400px;
+}
+
+.selected {
+	background: #2a4e6c !important;
+	color: #fff;
+}
