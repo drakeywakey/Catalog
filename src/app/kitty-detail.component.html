@@ -1,9 +1,10 @@
-<div class="modal" *ngIf="kitty">
+<div *ngIf="kitty">
   <h2>{{kitty.name}} the kitty is {{kitty.description}}!</h2>
   <img src="{{kitty.src}}">
   <div>
   	<label>info: </label>
   	<input [(ngModel)]="kitty.name" placeholder="name">
   	<input [(ngModel)]="kitty.description" placeholder="description">
+  	<span>Fave: <input type="checkbox" [(ngModel)]="kitty.fave"></span>
   </div>
 </div>

@@ -1,0 +1,33 @@
+.kitties-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	list-style-type: none;
+}
+
+.kitties-list li {
+	margin-bottom: 50px;
+}
+
+.kitties-list li:hover {
+	background: steelblue;
+	cursor: pointer;
+}
+
+.kitties-list a {
+	color: #000;
+	text-decoration: none;
+}
+
+.kitties-list a:hover {
+	color: #fff;
+}
+
+.thumbnail {
+	height: 350px;
+	width: 400px;
+}
+
+span, p {
+	font-family: 'Sansita', sans-serif;
+}
