@@ -6,21 +6,27 @@
 }
 
 .kitties-list li {
+	background: steelblue;
+	border-radius: 10px;
 	margin-bottom: 50px;
 }
 
+.description {
+	display: none;
+}
+
 .kitties-list li:hover {
-	background: steelblue;
+	background: #23415a;
 	cursor: pointer;
 }
 
-.kitties-list a {
-	color: #000;
-	text-decoration: none;
+.kitties-list li:hover .description {
+	display: inline;
 }
 
-.kitties-list a:hover {
+.kitties-list a {
 	color: #fff;
+	text-decoration: none;
 }
 
 .thumbnail {

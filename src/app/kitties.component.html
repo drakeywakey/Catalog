@@ -1,10 +1,10 @@
-| <span><input type="checkbox" [(ngModel)]="fave">Faves</span>
+<span><input type="checkbox" [(ngModel)]="fave">Faves</span>
 <p>Search <input type="text" value="kitty" [(ngModel)]="search"></p>
 <ul class="kitties-list">
 	<li *ngFor="let kitty of kitties | SearchPipe:search | FavePipe:fave" (click)="onSelect(kitty)" [class.selected]="kitty === selectedKitty">
-		<a [routerLink]="['/detail', kitty.id]">
+		<a [routerLink]="['/detail', kitty.id]" class="{{'kitty-'+kitty.id}}">
 			<img class="thumbnail" src="{{kitty.src}}"/>
-    		<p>{{kitty.name}}<p>
+    		<p>{{kitty.name}}<span class="description"> is {{kitty.description}}</span><p>
     	</a>
 	</li>
 </ul>
