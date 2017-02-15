@@ -8,4 +8,8 @@
     	</a>
 	</li>
 </ul>
-<my-kitty-detail [kitty]="selectedKitty"></my-kitty-detail>
+<label>Add a kitty: </label>
+<span>Src: <input type="text" #kittySrc /></span>
+<button (click)="add(kittySrc.value); kittySrc.value = ''">
+	Add
+</button>

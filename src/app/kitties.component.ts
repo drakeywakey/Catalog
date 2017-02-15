@@ -14,6 +14,18 @@ import { Kitty } from './kitty';
 export class KittiesComponent implements OnInit  {
 	constructor(private kittyService: KittyService) {}
 
+	add(src: string): void {
+		src = src.trim();
+		if (!src) { return; }
+		this.kittyService.createKitty(src)
+			.then(kitty => {
+				this.kitties.push(kitty);
+				this.selectedKitty = null;
+				//////groooosssss workaround, I'm positive this can be done differently
+				this.kitties = this.kitties.slice();
+			});
+	}
+
 	ngOnInit(): void {
 		this.getKitties();
 	}

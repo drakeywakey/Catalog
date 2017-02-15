@@ -9,23 +9,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mock_kitties_1 = require('./mock-kitties');
+var http_1 = require('@angular/http');
+require('rxjs/add/operator/toPromise');
 var KittyService = (function () {
-    function KittyService() {
+    function KittyService(http) {
+        this.http = http;
+        this.headers = new http_1.Headers({ 'Content-Type': 'applicaton/json' });
+        this.kittiesUrl = 'api/kitties';
     }
+    KittyService.prototype.createKitty = function (src) {
+        var kitty = { name: 'new kitty in town', description: 'a new kitty', src: src, fave: false };
+        return this.http.post(this.kittiesUrl, JSON.stringify(kitty), { headers: this.headers })
+            .toPromise()
+            .then(function (res) { return res.json().data; })
+            .catch(this.handleError);
+    };
     KittyService.prototype.getKitties = function () {
-        return Promise.resolve(mock_kitties_1.KITTIES);
+        return this.http.get(this.kittiesUrl)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
     };
     KittyService.prototype.getKitty = function (id) {
-        ///It's possible that the kitties won't be in id order
-        ///so KITTIES[id] might not return the right kitty
-        ///that's why we use the 'find' method
-        return this.getKitties()
-            .then(function (kitties) { return kitties.find(function (kitty) { return kitty.id === id; }); });
+        var url = this.kittiesUrl + "/" + id;
+        return this.http.get(url)
+            .toPromise()
+            .then(function (response) { return response.json().data; })
+            .catch(this.handleError);
+    };
+    KittyService.prototype.updateKitty = function (kitty) {
+        var url = this.kittiesUrl + "/" + kitty.id;
+        return this.http.put(url, JSON.stringify(kitty), { headers: this.headers })
+            .toPromise()
+            .then(function () { return kitty; })
+            .catch(this.handleError);
+    };
+    KittyService.prototype.handleError = function (error) {
+        console.error('An error occurred', error);
+        return Promise.reject(error.message || error);
     };
     KittyService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], KittyService);
     return KittyService;
 }());

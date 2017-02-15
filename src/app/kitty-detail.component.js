@@ -10,12 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var common_1 = require('@angular/common');
 require('rxjs/add/operator/switchMap');
 var kitty_1 = require('./kitty');
 var kitty_service_1 = require('./kitty.service');
 var KittyDetailComponent = (function () {
-    function KittyDetailComponent(kittyService, route) {
+    function KittyDetailComponent(kittyService, location, route) {
         this.kittyService = kittyService;
+        this.location = location;
         this.route = route;
     }
     KittyDetailComponent.prototype.ngOnInit = function () {
@@ -23,6 +25,11 @@ var KittyDetailComponent = (function () {
         this.route.params
             .switchMap(function (params) { return _this.kittyService.getKitty(+params['id']); })
             .subscribe(function (kitty) { return _this.kitty = kitty; });
+    };
+    KittyDetailComponent.prototype.saveKitty = function () {
+        var _this = this;
+        this.kittyService.updateKitty(this.kitty)
+            .then(function () { return _this.location.back(); });
     };
     __decorate([
         core_1.Input(), 
@@ -35,7 +42,7 @@ var KittyDetailComponent = (function () {
             templateUrl: './kitty-detail.component.html',
             styleUrls: ['./kitty-detail.component.css']
         }), 
-        __metadata('design:paramtypes', [kitty_service_1.KittyService, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [kitty_service_1.KittyService, common_1.Location, router_1.ActivatedRoute])
     ], KittyDetailComponent);
     return KittyDetailComponent;
 }());

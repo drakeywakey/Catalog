@@ -16,6 +16,20 @@ var KittiesComponent = (function () {
         this.fave = false;
         this.search = '';
     }
+    KittiesComponent.prototype.add = function (src) {
+        var _this = this;
+        src = src.trim();
+        if (!src) {
+            return;
+        }
+        this.kittyService.createKitty(src)
+            .then(function (kitty) {
+            _this.kitties.push(kitty);
+            _this.selectedKitty = null;
+            //////groooosssss workaround, I'm positive this can be done differently
+            _this.kitties = _this.kitties.slice();
+        });
+    };
     KittiesComponent.prototype.ngOnInit = function () {
         this.getKitties();
     };

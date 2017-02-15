@@ -7,5 +7,6 @@
   	<input [(ngModel)]="kitty.name" placeholder="name" maxlength="30">
   	<input [(ngModel)]="kitty.description" placeholder="description" maxlength="30">
   	<span>Fave: <input type="checkbox" [(ngModel)]="kitty.fave"></span>
+  	<button (click)="saveKitty()">Save</button>
   </div>
 </div>

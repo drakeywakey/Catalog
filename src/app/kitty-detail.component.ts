@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import 'rxjs/add/operator/switchMap';
 
 import { Kitty } from './kitty';
@@ -19,6 +20,7 @@ export class KittyDetailComponent implements OnInit {
 
 	constructor(
 		private kittyService: KittyService,
+		private location: Location,
 		private route: ActivatedRoute
 	) {}
 
@@ -26,5 +28,10 @@ export class KittyDetailComponent implements OnInit {
 		this.route.params
 			.switchMap((params: Params) => this.kittyService.getKitty(+params['id']))
 			.subscribe(kitty => this.kitty = kitty);
+	}
+
+	saveKitty(): void {
+		this.kittyService.updateKitty(this.kitty)
+			.then(() => this.location.back());
 	}
 }
